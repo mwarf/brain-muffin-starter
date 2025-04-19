@@ -1,42 +1,133 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { buttonVariants } from "@/components/ui/button";
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import Button component
 ---
 
-<BaseLayout
-  title="Astro Shadcn UI Template"
-  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
->
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Astro Shadcn UI Template <br class="hidden sm:inline" />
-        built with Radix UI and Tailwind CSS.
+<BaseLayout> {/* Use default title/description from HeadSEO */}
+  
+  <!-- Hero Section -->
+  <section class="container grid lg:grid-cols-2 items-center gap-10 py-16 md:py-24">
+    <div class="flex flex-col items-start gap-4">
+      <h1 class="text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl">
+        Your AI-Powered VFX Partner <br class="hidden sm:inline" /> Has Arrived.
       </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Accessible and customizable components that you can copy and paste into
-        your apps. Free. Open Source.
+      <p class="text-muted-foreground max-w-[700px] text-lg md:text-xl">
+        BrainMuffin, from Coalbanks Creative Inc., brings cutting-edge AI to documentary-style corporate video and aerial footage. Let's create something amazing.
       </p>
+      <div class="flex gap-4">
+        <a href="/contact" class={buttonVariants({ size: "lg" })}>
+          Start Your Project
+        </a>
+        <a href="/services" class={buttonVariants({ variant: 'outline', size: "lg" })}>
+          Explore Services
+        </a>
+      </div>
     </div>
-    <div class="flex gap-4">
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants()}
-      >
-        Documentation
-      </a>
-      <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'outline' })}
-      >
-        GitHub
+    <!-- Mascot Placeholder -->
+    <div class="bg-muted aspect-square w-full max-w-md mx-auto rounded-lg flex items-center justify-center lg:max-w-none lg:mx-0">
+      <p class="text-muted-foreground text-xl">BrainMuffin Mascot Placeholder</p>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="container py-16 md:py-24 bg-secondary/30">
+    <h2 class="text-3xl font-bold text-center mb-10">What We Do</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Service 1 Placeholder -->
+      <div class="text-center">
+        <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
+        <h3 class="text-xl font-semibold mb-2">AI Video Enhancement</h3>
+        <p class="text-muted-foreground mb-4">Upscaling, noise reduction, stabilization...</p>
+        <a href="/services#service1" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
+      </div>
+      <!-- Service 2 Placeholder -->
+      <div class="text-center">
+        <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
+        <h3 class="text-xl font-semibold mb-2">Intelligent Editing</h3>
+        <p class="text-muted-foreground mb-4">Automated scene detection, smart cuts...</p>
+        <a href="/services#service2" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
+      </div>
+      <!-- Service 3 Placeholder -->
+      <div class="text-center">
+        <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
+        <h3 class="text-xl font-semibold mb-2">Custom AI Solutions</h3>
+        <p class="text-muted-foreground mb-4">Tailored AI models for unique VFX challenges...</p>
+        <a href="/services#service3" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Teaser -->
+  <section class="container py-16 md:py-24">
+    <h2 class="text-3xl font-bold text-center mb-10">Featured Work</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Project 1 Placeholder -->
+      <div class="bg-muted aspect-video rounded-lg flex items-center justify-center">Project 1 Video/Image</div>
+      <!-- Project 2 Placeholder -->
+      <div class="bg-muted aspect-video rounded-lg flex items-center justify-center">Project 2 Video/Image</div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="/portfolio" class={buttonVariants({ variant: 'outline' })}>
+        View Full Portfolio
       </a>
     </div>
   </section>
+
+  <!-- About Snippet -->
+  <section class="container py-16 md:py-24 bg-secondary/30">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Who is BrainMuffin?</h2>
+      <p class="text-muted-foreground text-lg mb-6">
+        We're the dedicated AI VFX wing of Coalbanks Creative Inc., based in Lethbridge, Alberta. We blend creative storytelling with powerful AI technology.
+      </p>
+      <a href="/about" class={buttonVariants()}>
+        Meet the Team
+      </a>
+    </div>
+  </section>
+
+  <!-- Blog Teaser -->
+  <section class="container py-16 md:py-24">
+    <h2 class="text-3xl font-bold text-center mb-10">From the Blog</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Blog Post 1 Placeholder -->
+      <div class="border p-4 rounded-lg">
+        <div class="bg-muted h-40 mb-4 rounded-md"></div>
+        <h3 class="text-lg font-semibold mb-2">Blog Post Title 1</h3>
+        <p class="text-sm text-muted-foreground mb-3">Short excerpt...</p>
+        <a href="/blog/post1" class={buttonVariants({ variant: 'link', size: 'sm' })}>Read More &rarr;</a>
+      </div>
+      <!-- Blog Post 2 Placeholder -->
+      <div class="border p-4 rounded-lg">
+        <div class="bg-muted h-40 mb-4 rounded-md"></div>
+        <h3 class="text-lg font-semibold mb-2">Blog Post Title 2</h3>
+        <p class="text-sm text-muted-foreground mb-3">Short excerpt...</p>
+        <a href="/blog/post2" class={buttonVariants({ variant: 'link', size: 'sm' })}>Read More &rarr;</a>
+      </div>
+      <!-- Blog Post 3 Placeholder -->
+      <div class="border p-4 rounded-lg">
+        <div class="bg-muted h-40 mb-4 rounded-md"></div>
+        <h3 class="text-lg font-semibold mb-2">Blog Post Title 3</h3>
+        <p class="text-sm text-muted-foreground mb-3">Short excerpt...</p>
+        <a href="/blog/post3" class={buttonVariants({ variant: 'link', size: 'sm' })}>Read More &rarr;</a>
+      </div>
+    </div>
+     <div class="text-center mt-8">
+      <a href="/blog" class={buttonVariants({ variant: 'outline' })}>
+        Visit the Blog
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="container py-16 md:py-24 text-center">
+     <h2 class="text-3xl font-bold mb-4">Ready to Start Your AI VFX Journey?</h2>
+      <p class="text-muted-foreground text-lg mb-6 max-w-2xl mx-auto">
+        Let BrainMuffin elevate your next project. Contact us today for a consultation.
+      </p>
+      <a href="/contact" class={buttonVariants({ size: "lg" })}>
+        Get in Touch
+      </a>
+  </section>
+
 </BaseLayout>

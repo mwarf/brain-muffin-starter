@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Badge } from "@/components/ui/badge"; // For tags/categories
+---
+
+<BaseLayout title="Portfolio - BrainMuffin" description="See examples of BrainMuffin's AI VFX work for corporate video and aerial footage.">
+  <div class="container py-12 md:py-20">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Portfolio Showcase</h1>
+    <p class="text-lg text-muted-foreground mb-16 max-w-3xl mx-auto text-center">
+      Explore how BrainMuffin utilizes AI to elevate visual storytelling in real-world projects.
+    </p>
+    
+    <!-- Portfolio Grid -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+
+      <!-- Portfolio Item 1 Placeholder -->
+      <article class="border rounded-lg overflow-hidden group">
+        <div class="bg-muted aspect-video w-full flex items-center justify-center relative overflow-hidden">
+          <p class="text-muted-foreground z-10">Video/Image Placeholder 1</p>
+          <!-- Optional: Hover effect -->
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <span class="text-white text-lg font-semibold">View Project</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Project One Title (Placeholder)</h2>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <Badge variant="secondary">AI Upscaling</Badge>
+            <Badge variant="secondary">Corporate Video</Badge>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            Brief description of project one and the AI techniques used... Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <!-- Optional link to case study or video -->
+          <!-- <a href="#" class="text-primary text-sm hover:underline mt-2 inline-block">Read Case Study &rarr;</a> -->
+        </div>
+      </article>
+
+      <!-- Portfolio Item 2 Placeholder -->
+       <article class="border rounded-lg overflow-hidden group">
+        <div class="bg-muted aspect-video w-full flex items-center justify-center relative overflow-hidden">
+          <p class="text-muted-foreground z-10">Video/Image Placeholder 2</p>
+           <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <span class="text-white text-lg font-semibold">View Project</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Project Two Title (Placeholder)</h2>
+           <div class="flex flex-wrap gap-2 mb-3">
+            <Badge variant="secondary">Intelligent Editing</Badge>
+            <Badge variant="secondary">Aerial Footage</Badge>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            Brief description of project two and the AI techniques used... Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </article>
+
+       <!-- Portfolio Item 3 Placeholder -->
+       <article class="border rounded-lg overflow-hidden group">
+        <div class="bg-muted aspect-video w-full flex items-center justify-center relative overflow-hidden">
+          <p class="text-muted-foreground z-10">Video/Image Placeholder 3</p>
+           <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <span class="text-white text-lg font-semibold">View Project</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Project Three Title (Placeholder)</h2>
+           <div class="flex flex-wrap gap-2 mb-3">
+            <Badge variant="secondary">Custom AI Solution</Badge>
+            <Badge variant="secondary">Documentary</Badge>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            Brief description of project three and the AI techniques used... Ut enim ad minim veniam, quis nostrud exercitation.
+          </p>
+        </div>
+      </article>
+
+       <!-- Portfolio Item 4 Placeholder -->
+       <article class="border rounded-lg overflow-hidden group">
+        <div class="bg-muted aspect-video w-full flex items-center justify-center relative overflow-hidden">
+          <p class="text-muted-foreground z-10">Video/Image Placeholder 4</p>
+           <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <span class="text-white text-lg font-semibold">View Project</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Project Four Title (Placeholder)</h2>
+           <div class="flex flex-wrap gap-2 mb-3">
+            <Badge variant="secondary">AI Stabilization</Badge>
+             <Badge variant="secondary">Corporate Video</Badge>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            Brief description of project four and the AI techniques used... Duis aute irure dolor in reprehenderit.
+          </p>
+        </div>
+      </article>
+
+      <!-- Add more portfolio items as needed -->
+
+    </div>
+     <!-- Optional Pagination or Load More Button -->
+     <!-- <div class="text-center mt-12"> ... </div> -->
+  </div>
+</BaseLayout>

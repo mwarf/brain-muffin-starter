@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buttonVariants } from "@/components/ui/button"; // For CTA
+---
+
+<BaseLayout title="Services - BrainMuffin" description="Explore the AI-powered VFX services offered by BrainMuffin, including enhancement, intelligent editing, and custom solutions.">
+  <div class="container py-12 md:py-20">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Our AI VFX Services</h1>
+    <p class="text-lg text-muted-foreground mb-16 max-w-3xl mx-auto text-center">
+      Leveraging the power of artificial intelligence, BrainMuffin offers specialized VFX services designed to elevate your documentary-style corporate videos and aerial footage.
+    </p>
+    
+    <!-- Service 1: AI Video Enhancement -->
+    <section id="service1" class="mb-16 grid md:grid-cols-2 gap-10 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="text-3xl font-semibold mb-4">AI Video Enhancement</h2>
+        <p class="text-muted-foreground mb-3">
+          Breathe new life into your footage. Our AI models can intelligently upscale resolution, reduce noise, stabilize shaky shots, and even colorize black and white video with remarkable accuracy.
+        </p>
+        <ul class="list-disc list-inside text-muted-foreground space-y-1 mb-4">
+          <li>Resolution Upscaling (Placeholder detail...)</li>
+          <li>Noise Reduction & Denoising (Placeholder detail...)</li>
+          <li>AI-Powered Stabilization (Placeholder detail...)</li>
+          <li>Frame Rate Interpolation (Placeholder detail...)</li>
+          <li>Colorization (Placeholder detail...)</li>
+        </ul>
+         <p class="text-muted-foreground font-medium">
+          (More detailed description placeholder...) Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+      <div class="order-1 md:order-2 bg-muted aspect-video rounded-lg flex items-center justify-center">
+         <p class="text-muted-foreground">Enhancement Demo/Image Placeholder</p>
+      </div>
+    </section>
+
+    <!-- Service 2: Intelligent Editing -->
+     <section id="service2" class="mb-16 grid md:grid-cols-2 gap-10 items-center">
+       <div class="bg-muted aspect-video rounded-lg flex items-center justify-center">
+         <p class="text-muted-foreground">Editing Demo/Image Placeholder</p>
+       </div>
+      <div>
+        <h2 class="text-3xl font-semibold mb-4">Intelligent Editing Assistance</h2>
+        <p class="text-muted-foreground mb-3">
+          Streamline your post-production workflow. Our AI tools can assist with tasks like automated scene detection, intelligent cut suggestions based on narrative flow, transcript generation, and identifying key moments in long footage.
+        </p>
+        <ul class="list-disc list-inside text-muted-foreground space-y-1 mb-4">
+          <li>Automated Scene Detection (Placeholder detail...)</li>
+          <li>Smart Cut Suggestions (Placeholder detail...)</li>
+          <li>AI-Powered Transcription (Placeholder detail...)</li>
+          <li>Key Moment Identification (Placeholder detail...)</li>
+        </ul>
+         <p class="text-muted-foreground font-medium">
+          (More detailed description placeholder...) Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+    </section>
+
+    <!-- Service 3: Custom AI Solutions -->
+    <section id="service3" class="mb-16 grid md:grid-cols-2 gap-10 items-center">
+       <div class="order-2 md:order-1">
+        <h2 class="text-3xl font-semibold mb-4">Custom AI Solutions</h2>
+        <p class="text-muted-foreground mb-3">
+          Have a unique VFX challenge? We can explore developing or fine-tuning bespoke AI models tailored to your specific project needs, from object removal and style transfer to complex data analysis for visual storytelling.
+        </p>
+         <ul class="list-disc list-inside text-muted-foreground space-y-1 mb-4">
+          <li>Bespoke Model Development (Placeholder detail...)</li>
+          <li>AI-Driven Object Removal/Replacement (Placeholder detail...)</li>
+          <li>Neural Style Transfer (Placeholder detail...)</li>
+          <li>Visual Data Analysis & Storytelling (Placeholder detail...)</li>
+        </ul>
+         <p class="text-muted-foreground font-medium">
+          (More detailed description placeholder...) Ut enim ad minim veniam, quis nostrud exercitation.
+        </p>
+      </div>
+       <div class="order-1 md:order-2 bg-muted aspect-video rounded-lg flex items-center justify-center">
+         <p class="text-muted-foreground">Custom Solution Demo/Image Placeholder</p>
+       </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center mt-20 py-12 bg-primary text-primary-foreground rounded-lg">
+       <h2 class="text-3xl font-bold mb-4">Ready to Enhance Your Project?</h2>
+       <p class="text-lg mb-6 max-w-2xl mx-auto">
+         Let's discuss how BrainMuffin's AI VFX services can bring your vision to life.
+       </p>
+       <a href="/contact" class={buttonVariants({ variant: 'secondary', size: 'lg' })}>
+         Get a Quote
+       </a>
+    </section>
+
+  </div>
+</BaseLayout>

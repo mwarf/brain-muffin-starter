@@ -9,23 +9,32 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
   <div
     class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
   >
-    <div class="flex gap-6 md:gap-10">
+    <!-- Logo Placeholder -->
+    <div class="flex items-center">
       <a href="/" class="flex items-center space-x-2">
-        <span class="inline-block font-bold">Home</span>
+        <!-- Replace with actual logo later -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+          <path fill-rule="evenodd" d="M15.28 4.72a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 0 0 1.06l6.25 6.25a.75.75 0 1 1-1.06 1.06l-6.25-6.25a2.25 2.25 0 0 1 0-3.18l6.25-6.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+        </svg>
+        <span class="inline-block font-bold text-lg">BrainMuffin</span>
       </a>
     </div>
-    <div class="flex flex-1 items-center justify-end space-x-4">
-      <nav class="flex items-center space-x-1">
-        <a
-          href="https://github.com/AREA44/astro-shadcn-ui-template"
-          target="_blank"
-          rel="noreferrer"
-          class={buttonVariants({ variant: 'ghost' })}
-        >
-          GitHub
-        </a>
-        <ThemeToggle />
-      </nav>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden flex-1 items-center justify-end space-x-4 md:flex">
+      <a href="/" class={buttonVariants({ variant: 'ghost' })}>Home</a>
+      <a href="/about" class={buttonVariants({ variant: 'ghost' })}>About</a>
+      <a href="/services" class={buttonVariants({ variant: 'ghost' })}>Services</a>
+      <a href="/portfolio" class={buttonVariants({ variant: 'ghost' })}>Portfolio</a>
+      <a href="/blog" class={buttonVariants({ variant: 'ghost' })}>Blog</a>
+      <a href="/contact" class={buttonVariants({ variant: 'ghost' })}>Contact</a>
+      <ThemeToggle />
+    </nav>
+
+    <!-- Mobile Navigation (Placeholder/Optional - can add a hamburger menu later) -->
+    <div class="flex flex-1 items-center justify-end md:hidden">
+      <ThemeToggle />
+      <!-- Add mobile menu button here if needed -->
     </div>
   </div>
 </header>

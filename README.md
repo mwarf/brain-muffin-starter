@@ -1,26 +1,35 @@
-# Astro Shadcn UI Template
+# BrainMuffin - AI VFX Department Website
 
-This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI.
+This repository contains the source code for the BrainMuffin website, an AI VFX department powered by Coalbanks Creative Inc. The site aims to capture leads, showcase AI VFX services, and host a thought leadership blog.
 
 ## Getting Started
 
-To get started with this application, make sure you have Node.js v18+ installed on your system. Then, follow these steps:
+To get started with development, make sure you have Node.js v18+ (check `.nvmrc`) and `pnpm` installed on your system. Then, follow these steps:
 
 ```bash
-git clone --depth=1 https://github.com/AREA44/astro-shadcn-ui-template
-cd astro-shadcn-ui-template
+# Install dependencies
 pnpm install
+
+# Start the development server
 pnpm dev
 ```
 
-Now, you can open your browser and navigate to http://localhost:4321 to see the application running.
+Open your browser and navigate to `http://localhost:4321` (or the port specified in the terminal) to see the application running.
 
-## Features
+## Technology Stack & Features
 
-- [Astro](https://astro.build): A modern static site builder that allows you to write components using familiar web standards like HTML, CSS, and JavaScript.
-- [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework that provides a set of pre-designed styling classes to rapidly build user interfaces.
-- [shadcn/ui](https://ui.shadcn.com): A collection of reusable UI components for building responsive and accessible interfaces.
-- The template includes support for a theme toggle, allowing users to switch between light and dark themes.
+This project utilizes the following core technologies:
+
+- [Astro](https://astro.build): A modern web framework for building content-driven websites.
+- [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework for rapid UI development.
+- [shadcn/ui](https://ui.shadcn.com): Re-usable UI components built using Radix UI and Tailwind CSS (integrated via Astro islands for interactivity).
+- **Astro Content Collections:** Used for managing blog posts and potentially other structured content.
+- **Theme Toggle:** Includes support for switching between light and dark themes.
+
+## Project Documentation
+
+- **Development Plan:** See [todo.md](todo.md) for the detailed development checklist and phases.
+- **Developer Onboarding:** New developers should consult [knowledgetransfer.md](knowledgetransfer.md) for an overview of the project structure, conventions, and workflow.
 
 ## How to add components
 

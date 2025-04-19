@@ -1,0 +1,137 @@
+---
+// src/pages/blog/category/[category].astro
+import { type GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buttonVariants } from "@/components/ui/button"; // For category links
+import type { CollectionEntry } from 'astro:content'; // Import CollectionEntry type
+
+// Define the allowed category types based on the schema in config.ts
+type BlogCategory = "Industry Trends" | "Experiments" | "Thoughts" | "Project Case Studies";
+
+// Helper function to slugify category names
+function slugify(text: string) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w-]+/g, '') // Remove all non-word chars
+    .replace(/--+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+}
+
+// Generate static paths for each unique category
+export const getStaticPaths = (async () => {
+  const allPosts = await getCollection('blog', ({ data }) => {
+    return data.isDraft !== true;
+  });
+
+  const uniqueCategories = [...new Set(allPosts.flatMap(post => post.data.categories))];
+
+  return uniqueCategories.map(category => {
+    const categorySlug = slugify(category);
+    return {
+      params: { category: categorySlug }, // URL parameter
+      props: { categoryName: category }, // Pass original category name
+    };
+  });
+}) satisfies GetStaticPaths;
+
+// Get props from getStaticPaths
+interface Props {
+  categoryName: string;
+}
+const { categoryName } = Astro.props;
+const categorySlug = Astro.params.category; // Get slug from URL
+
+// Fetch posts filtered by the current category
+const filteredPosts = await getCollection('blog', ({ data }: CollectionEntry<'blog'>) => {
+  // Check if post is not draft AND includes the current category (cast categoryName)
+  return !data.isDraft && data.categories.includes(categoryName as BlogCategory);
+});
+
+// Sort filtered posts by date
+const sortedPosts = filteredPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Get all unique categories again for the filter links
+const allCategories = [...new Set((await getCollection('blog', ({ data }) => !data.isDraft)).flatMap(post => post.data.categories))];
+---
+
+<BaseLayout title={`Category: ${categoryName} - BrainMuffin Blog`} description={`Blog posts categorized under ${categoryName}.`}>
+  <div class="container py-12">
+    <h1 class="text-4xl font-bold mb-2">Blog Posts: <span class="text-primary">{categoryName}</span></h1>
+    <p class="text-lg text-muted-foreground mb-8">
+      Showing all posts categorized under "{categoryName}".
+    </p>
+
+    <!-- Category Filters -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Filter by Category:</h2>
+      <div class="flex flex-wrap gap-2">
+        <a href="/blog" class={buttonVariants({ variant: 'outline', size: 'sm' })}>All Posts</a>
+        {allCategories.map(cat => {
+          const currentSlug = slugify(cat);
+          const isActive = currentSlug === categorySlug;
+          return (
+            <a 
+              href={`/blog/category/${currentSlug}`} 
+              class={buttonVariants({ variant: isActive ? 'default' : 'outline', size: 'sm' })}
+              aria-current={isActive ? 'page' : false}
+            >
+              {cat}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+
+    <!-- Filtered Blog Post List -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {sortedPosts.length === 0 ? (
+        <p class="text-muted-foreground col-span-full text-center">No posts found in the "{categoryName}" category.</p>
+      ) : (
+        sortedPosts.map(post => (
+          <article class="border rounded-lg overflow-hidden flex flex-col">
+            {post.data.heroImage && (
+              <a href={`/blog/${post.slug}/`}>
+                <img 
+                  src={post.data.heroImage} 
+                  alt={post.data.title} 
+                  class="w-full h-48 object-cover"
+                />
+              </a>
+            )}
+            <div class="p-4 flex flex-col flex-grow">
+              <h2 class="text-xl font-semibold mb-2 hover:text-primary">
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <p class="text-sm text-muted-foreground mb-1">
+                Published on: {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              {post.data.categories && (
+                <p class="text-xs text-muted-foreground mb-3">
+                  Categories: {post.data.categories.join(', ')}
+                </p>
+              )}
+              {post.data.description && (
+                <p class="text-muted-foreground text-sm mb-4 flex-grow">
+                  {post.data.description}
+                </p>
+              )}
+              <a 
+                href={`/blog/${post.slug}/`} 
+                class={buttonVariants({ variant: 'link', size: 'sm' })}
+                class:list={'p-0 h-auto self-start'}
+              >
+                Read More &rarr;
+              </a>
+            </div>
+          </article>
+        ))
+      )}
+    </div>
+  </div>
+</BaseLayout>

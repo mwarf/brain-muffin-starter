@@ -11,10 +11,20 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL("og-image.png", canonicalURL);
+  Astro.props.ogImage = new URL("/og-image.png", Astro.site); // Use site root for default OG image
 }
 
-const { title, description, ogImage } = Astro.props;
+// --- Set Default Values ---
+const defaultTitle = "BrainMuffin - AI VFX Department";
+const defaultDescription = "Your AI-powered VFX partner from Coalbanks Creative Inc. Specializing in documentary-style corporate video and aerial footage.";
+
+const { 
+  title = defaultTitle, 
+  description = defaultDescription, 
+  ogImage 
+} = Astro.props;
+// --- ---
+
 ---
 
 <meta charset="utf-8" />
@@ -23,11 +33,19 @@ const { title, description, ogImage } = Astro.props;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
+<!-- Favicon using SVG (preferred) -->
 <link
-  rel="shortcut icon"
+  rel="icon"
   type="image/svg+xml"
-  href={`${Astro.site}favicon.svg`}
+  href="/favicon.svg" 
 />
+<!-- Fallback favicon using PNG -->
+<link 
+  rel="alternate icon" 
+  type="image/png" 
+  href="/favicon.png"
+> <!-- Assuming a PNG favicon exists or will be added -->
+
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
