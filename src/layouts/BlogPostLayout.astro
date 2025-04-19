@@ -1,10 +1,10 @@
 ---
 // src/layouts/BlogPostLayout.astro
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import type { CollectionEntry } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-	post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;

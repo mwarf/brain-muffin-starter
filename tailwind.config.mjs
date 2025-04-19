@@ -2,13 +2,14 @@
 export default {
   darkMode: ["class"], // Matches Shadcn UI setup
   content: [
-    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', // Scan all relevant files in src
-    './pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', // Include pages just in case (though src should cover it)
-    './components/**/*.{ts,tsx}', // Specifically for Shadcn UI components
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", // Scan all relevant files in src
+    "./pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", // Include pages just in case (though src should cover it)
+    "./components/**/*.{ts,tsx}", // Specifically for Shadcn UI components
   ],
   prefix: "", // Matches Shadcn UI setup
   theme: {
-    container: { // Matches Shadcn UI setup
+    container: {
+      // Matches Shadcn UI setup
       center: true,
       padding: "2rem",
       screens: {
@@ -20,22 +21,22 @@ export default {
         // --- BrainMuffin Placeholder Palette (Colourful, Modern, Playful) ---
         brain: {
           primary: {
-            DEFAULT: 'hsl(260, 80%, 60%)', // Vibrant Purple
-            foreground: 'hsl(0, 0%, 100%)', // White
+            DEFAULT: "hsl(260, 80%, 60%)", // Vibrant Purple
+            foreground: "hsl(0, 0%, 100%)", // White
           },
           secondary: {
-            DEFAULT: 'hsl(180, 70%, 50%)', // Bright Teal
-            foreground: 'hsl(180, 100%, 10%)', // Dark Teal
+            DEFAULT: "hsl(180, 70%, 50%)", // Bright Teal
+            foreground: "hsl(180, 100%, 10%)", // Dark Teal
           },
           accent: {
-            DEFAULT: 'hsl(45, 100%, 55%)', // Sunny Yellow
-            foreground: 'hsl(45, 100%, 15%)', // Dark Yellow/Brown
+            DEFAULT: "hsl(45, 100%, 55%)", // Sunny Yellow
+            foreground: "hsl(45, 100%, 15%)", // Dark Yellow/Brown
           },
           playful: {
-            pink: 'hsl(330, 90%, 65%)',
-            green: 'hsl(140, 70%, 55%)',
-            orange: 'hsl(25, 95%, 60%)',
-          }
+            pink: "hsl(330, 90%, 65%)",
+            green: "hsl(140, 70%, 55%)",
+            orange: "hsl(25, 95%, 60%)",
+          },
         },
         // --- Shadcn UI Base Colors (Keep these for component compatibility) ---
         border: "hsl(var(--border))",
@@ -72,12 +73,14 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: { // Matches Shadcn UI setup
+      borderRadius: {
+        // Matches Shadcn UI setup
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: { // Matches Shadcn UI setup
+      keyframes: {
+        // Matches Shadcn UI setup
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -87,11 +90,12 @@ export default {
           to: { height: "0" },
         },
       },
-      animation: { // Matches Shadcn UI setup
+      animation: {
+        // Matches Shadcn UI setup
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   plugins: [require("tailwindcss-animate")], // Matches Shadcn UI setup
-}
+};

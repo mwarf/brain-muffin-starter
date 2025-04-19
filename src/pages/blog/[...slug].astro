@@ -1,16 +1,16 @@
 ---
 // src/pages/blog/[...slug].astro
-import { type GetStaticPaths, type Page } from 'astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import BlogPostLayout from '@/layouts/BlogPostLayout.astro';
+import { type GetStaticPaths, type Page } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
 
 // Generate static paths for all non-draft blog posts
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('blog', ({ data }) => {
+  const posts = await getCollection("blog", ({ data }) => {
     return data.isDraft !== true; // Filter out drafts
   });
 
-  return posts.map(post => ({
+  return posts.map((post) => ({
     params: { slug: post.slug }, // The slug is used in the URL
     props: { post }, // Pass the full post object as props
   }));
@@ -18,7 +18,7 @@ export const getStaticPaths = (async () => {
 
 // Define the props expected by this page component
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
 // Get the post passed from getStaticPaths

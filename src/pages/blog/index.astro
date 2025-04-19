@@ -1,19 +1,21 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 import { buttonVariants } from "@/components/ui/button"; // For category links
 
 // Fetch all blog posts, filter out drafts, and sort by date
-const allPosts = await getCollection('blog', ({ data }) => {
+const allPosts = await getCollection("blog", ({ data }) => {
   return data.isDraft !== true; // Filter out drafts
 });
 
 const sortedPosts = allPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 // Get unique categories for filtering (implementation later)
-const categories = [...new Set(allPosts.flatMap(post => post.data.categories))];
+const categories = [
+  ...new Set(allPosts.flatMap((post) => post.data.categories)),
+];
 ---
 
 <BaseLayout title="Blog - BrainMuffin" description="Thoughts, experiments, and case studies from the BrainMuffin AI VFX team.">

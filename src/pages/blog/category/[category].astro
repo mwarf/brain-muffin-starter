@@ -1,24 +1,30 @@
 ---
 // src/pages/blog/category/[category].astro
-import { type GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import { type GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { buttonVariants } from "@/components/ui/button"; // For category links
-import type { CollectionEntry } from 'astro:content'; // Import CollectionEntry type
-import { slugify } from '@/lib/utils'; // Import slugify
+import type { CollectionEntry } from "astro:content"; // Import CollectionEntry type
+import { slugify } from "@/lib/utils"; // Import slugify
 
 // Define the allowed category types based on the schema in config.ts
-type BlogCategory = "Industry Trends" | "Experiments" | "Thoughts" | "Project Case Studies";
+type BlogCategory =
+  | "Industry Trends"
+  | "Experiments"
+  | "Thoughts"
+  | "Project Case Studies";
 
 // Generate static paths for each unique category
 export const getStaticPaths = (async () => {
-  const allPosts = await getCollection('blog', ({ data }) => {
+  const allPosts = await getCollection("blog", ({ data }) => {
     return data.isDraft !== true;
   });
 
-  const uniqueCategories = [...new Set(allPosts.flatMap(post => post.data.categories))];
+  const uniqueCategories = [
+    ...new Set(allPosts.flatMap((post) => post.data.categories)),
+  ];
 
-  return uniqueCategories.map(category => {
+  return uniqueCategories.map((category) => {
     const categorySlug = slugify(category);
     return {
       params: { category: categorySlug }, // URL parameter
@@ -35,18 +41,29 @@ const { categoryName } = Astro.props;
 const categorySlug = Astro.params.category; // Get slug from URL
 
 // Fetch posts filtered by the current category
-const filteredPosts = await getCollection('blog', ({ data }: CollectionEntry<'blog'>) => {
-  // Check if post is not draft AND includes the current category (cast categoryName)
-  return !data.isDraft && data.categories.includes(categoryName as BlogCategory);
-});
+const filteredPosts = await getCollection(
+  "blog",
+  ({ data }: CollectionEntry<"blog">) => {
+    // Check if post is not draft AND includes the current category (cast categoryName)
+    return (
+      !data.isDraft && data.categories.includes(categoryName as BlogCategory)
+    );
+  },
+);
 
 // Sort filtered posts by date
 const sortedPosts = filteredPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 // Get all unique categories again for the filter links
-const allCategories = [...new Set((await getCollection('blog', ({ data }) => !data.isDraft)).flatMap(post => post.data.categories))];
+const allCategories = [
+  ...new Set(
+    (await getCollection("blog", ({ data }) => !data.isDraft)).flatMap(
+      (post) => post.data.categories,
+    ),
+  ),
+];
 ---
 
 <BaseLayout title={`Category: ${categoryName} - BrainMuffin Blog`} description={`Blog posts categorized under ${categoryName}.`}>
@@ -65,8 +82,8 @@ const allCategories = [...new Set((await getCollection('blog', ({ data }) => !da
           const currentSlug = slugify(cat);
           const isActive = currentSlug === categorySlug;
           return (
-            <a 
-              href={`/blog/category/${currentSlug}`} 
+            <a
+              href={`/blog/category/${currentSlug}`}
               class={buttonVariants({ variant: isActive ? 'default' : 'outline', size: 'sm' })}
               aria-current={isActive ? 'page' : false}
             >
@@ -86,9 +103,9 @@ const allCategories = [...new Set((await getCollection('blog', ({ data }) => !da
           <article class="border rounded-lg overflow-hidden flex flex-col">
             {post.data.heroImage && (
               <a href={`/blog/${post.slug}/`}>
-                <img 
-                  src={post.data.heroImage} 
-                  alt={post.data.title} 
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
                   class="w-full h-48 object-cover"
                 />
               </a>
@@ -110,8 +127,8 @@ const allCategories = [...new Set((await getCollection('blog', ({ data }) => !da
                   {post.data.description}
                 </p>
               )}
-              <a 
-                href={`/blog/${post.slug}/`} 
+              <a
+                href={`/blog/${post.slug}/`}
                 class={buttonVariants({ variant: 'link', size: 'sm' })}
                 class:list={'p-0 h-auto self-start'}
               >
