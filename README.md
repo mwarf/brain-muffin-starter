@@ -46,6 +46,13 @@ Shadcn UI is primarily built for the React framework. If you are unfamiliar with
 
 Feel free to explore the various components and enhance your application with Shadcn UI!
 
+## Deployment
+
+This site is configured for deployment to [Cloudflare Pages](https://pages.cloudflare.com/).
+
+- **Configuration:** See `wrangler.jsonc` and the `deploy` script in `package.json`.
+- **Detailed Setup & Troubleshooting:** Refer to the [Deployment section in knowledgetransfer.md](knowledgetransfer.md#7-deployment).
+
 ## License
 
 Licensed under the [MIT License](LICENSE).

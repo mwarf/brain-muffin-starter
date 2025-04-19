@@ -54,9 +54,18 @@ This document outlines the steps to build the BrainMuffin AI VFX Department webs
 - [x] **Contact Page (`src/pages/contact.astro`):** Add placeholder contact details and a section marker for the future contact form. (No changes needed in this pass).
 - [ ] **Video Integration Placeholder:** Add placeholder sections on Services/Portfolio pages where videos will be embedded. (NEXT STEP)
 
-## Phase 4: Deployment Preparation
+## Phase 4: Deployment Preparation & Configuration
 
-- [x] **Cloudflare Configuration:** Ensure build commands are correct for Astro (`pnpm build`). Note any specific Cloudflare Pages settings needed. (Config files removed).
+- [x] **Cloudflare Configuration:**
+    - [x] Create `wrangler.jsonc` specifying project name and output directory (`./dist`).
+    - [x] Add `wrangler` as a dev dependency (`pnpm add -D wrangler`).
+    - [x] Add `deploy` script to `package.json` (`wrangler pages deploy ./dist`).
+    - [x] Configure Cloudflare Pages build settings:
+        - Build command: `pnpm run build`
+        - Deployment command: `pnpm run deploy`
+    - [x] Configure Cloudflare Pages environment variables:
+        - `CLOUDFLARE_API_TOKEN` with "Cloudflare Pages:Edit" permissions.
+    - [x] Troubleshoot and resolve deployment errors (e.g., project not found, authentication errors).
 
 ## Future Steps / Backlog
 

@@ -84,6 +84,31 @@ Remember to add `client:*` directives to interactive components when using them 
 ## 7. Deployment
 
 -   **Target Platform:** Cloudflare Pages.
--   **Build Command:** `pnpm build`
--   **Output Directory:** `dist`
--   **Configuration Files:** `netlify.toml` and `vercel.json` should be removed or ignored as they are not used for Cloudflare. A `wrangler.toml` might be added later if using Wrangler CLI for deployment.
+-   **Configuration:** Deployment is managed via the Wrangler CLI, configured by `wrangler.jsonc` in the project root.
+    ```jsonc
+    // Example wrangler.jsonc
+    {
+      "name": "your-cloudflare-project-name", // Must match the Cloudflare Pages project name
+      "compatibility_date": "YYYY-MM-DD", // Use a recent date
+      "pages_build_output_dir": "./dist" // Specifies the output directory of the build
+    }
+    ```
+-   **Build Command (Cloudflare Settings):** `pnpm run build` (or your framework's build command).
+-   **Deployment Command (Cloudflare Settings):** `pnpm run deploy` (This script should be defined in `package.json`).
+-   **`package.json` Script:** A `deploy` script is needed to execute the correct Wrangler command.
+    ```json
+    // Example package.json scripts
+    "scripts": {
+      "build": "astro build",
+      "deploy": "wrangler pages deploy ./dist",
+      // ... other scripts
+    },
+    ```
+-   **Dependencies:** The `wrangler` package must be added as a dev dependency (`pnpm add -D wrangler`).
+-   **Authentication:** The Cloudflare Pages build environment requires a `CLOUDFLARE_API_TOKEN` environment variable.
+    -   This token must be generated in the Cloudflare dashboard (My Profile > API Tokens).
+    -   It requires the **"Cloudflare Pages:Edit"** permission scoped to the correct Cloudflare **Account**.
+-   **Troubleshooting:**
+    -   **`Project not found [8000007]` error:** Verify the `name` in `wrangler.jsonc` exactly matches the project name in the correct Cloudflare account. Check for overriding environment variables like `CLOUDFLARE_PROJECT_NAME` in the build settings.
+    -   **`Authentication error [10000]` error:** Ensure the `CLOUDFLARE_API_TOKEN` is correct and has the required "Cloudflare Pages:Edit" permission for the account.
+    -   **`Workers-specific command in a Pages project` error:** Ensure the deployment command being run is `wrangler pages deploy ./dist` (or the script that runs it, like `pnpm run deploy`), not just `wrangler deploy`.
