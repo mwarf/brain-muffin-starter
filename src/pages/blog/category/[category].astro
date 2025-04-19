@@ -5,21 +5,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { buttonVariants } from "@/components/ui/button"; // For category links
 import type { CollectionEntry } from 'astro:content'; // Import CollectionEntry type
+import { slugify } from '@/lib/utils'; // Import slugify
 
 // Define the allowed category types based on the schema in config.ts
 type BlogCategory = "Industry Trends" | "Experiments" | "Thoughts" | "Project Case Studies";
-
-// Helper function to slugify category names
-function slugify(text: string) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w-]+/g, '') // Remove all non-word chars
-    .replace(/--+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
-}
 
 // Generate static paths for each unique category
 export const getStaticPaths = (async () => {
