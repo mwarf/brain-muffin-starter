@@ -52,7 +52,7 @@ This document outlines the steps to build the BrainMuffin AI VFX Department webs
 
 - [x] **Content Placeholders (Core Pages):** Populate `about.astro`, `services.astro`, `portfolio.astro` with more detailed placeholder text (`Lorem ipsum`) and image elements. (Note: Added `badge` component via Shadcn CLI for portfolio).
 - [x] **Contact Page (`src/pages/contact.astro`):** Add placeholder contact details and a section marker for the future contact form. (No changes needed in this pass).
-- [ ] **Video Integration Placeholder:** Add placeholder sections on Services/Portfolio pages where videos will be embedded. (NEXT STEP)
+- [x] **Video Integration Placeholder:** Add placeholder sections on Services/Portfolio pages where videos will be embedded.
 
 ## Phase 4: Deployment Preparation & Configuration
 

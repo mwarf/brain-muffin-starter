@@ -24,6 +24,17 @@ Welcome to the BrainMuffin website project! This document provides essential inf
 -   **TypeScript:** Used throughout the project. Configuration in `tsconfig.json`. Be mindful of potential type errors when working with dynamic data (e.g., category filtering), which may require explicit type casting or definitions. HTML comments inside tags in `.astro` files can also cause TS errors.
 -   **Linting/Formatting:** [Biome](https://biomejs.dev/) (configured in `biome.json`). Use `pnpm format` and `pnpm lint`.
 
+## 2.1. Brand Voice & Tone
+
+The desired brand voice for all website copy (including blog posts, service descriptions, etc.) should adhere to the following principles:
+
+-   **Friendly & Conversational:** Write naturally, as if speaking directly to the client. Use contractions and avoid overly formal language.
+-   **Smart & Helpful:** Clearly explain concepts and offer practical insights. Focus on empowering the client with useful information.
+-   **Humble & Confident:** Be assured in your skills but avoid arrogance. Emphasize collaboration and competence.
+-   **Jargon-Free:** Explain technical terms simply or avoid them altogether. Prioritize clear communication for a marketing audience.
+
+Essentially, the tone should be that of a trusted, experienced colleague who is approachable, knowledgeable, and genuinely helpful.
+
 ## 3. Project Structure
 
 ```

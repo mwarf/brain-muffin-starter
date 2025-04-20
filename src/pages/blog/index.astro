@@ -65,9 +65,13 @@ const categories = [
                 Published on: {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
               {post.data.categories && (
-                <p class="text-xs text-muted-foreground mb-3">
-                  Categories: {post.data.categories.join(', ')}
-                </p>
+                <div class="flex flex-wrap gap-1 mb-2">
+                  {post.data.categories.map(category => (
+                    <span class="inline-flex items-center bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md text-xs font-normal hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-150">
+                      {category}
+                    </span>
+                  ))}
+                </div>
               )}
               {post.data.description && (
                 <p class="text-muted-foreground text-sm mb-4 flex-grow">
