@@ -1,18 +1,34 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import Button component
+import { Button, buttonVariants } from "@/components/ui/button.tsx";
+import { Image } from "astro:assets";
+import heroCharacter from "@/images/hero-character-transparent.png";
+import heroBackground from "@/images/hero-background.png";
 ---
 
 <BaseLayout> {/* Use default title/description from HeadSEO */}
   
   <!-- Hero Section -->
-  <section class="container grid lg:grid-cols-2 items-center gap-10 py-16 md:py-24">
-    <div class="flex flex-col items-start gap-4">
+  <section class="container grid lg:grid-cols-2 items-center gap-10 py-16 md:py-24 relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-20">
+      <Image
+        src={heroBackground}
+        alt=""
+        class="w-full h-full object-cover"
+        format="webp"
+        quality={80}
+      />
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+
+    <!-- Text Content Column -->
+    <div class="relative flex flex-col items-start gap-4 p-8 z-10"> {/* Added z-10 to ensure text is above organic shape */}
       <h1 class="text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl">
-        Your AI-Powered VFX Partner <br class="hidden sm:inline" /> Has Arrived.
-      </h1>
+        Your AI VFX Superpowers - Unlocked!
+    </h1>
       <p class="text-muted-foreground max-w-[700px] text-lg md:text-xl">
-        BrainMuffin, from Coalbanks Creative Inc., brings cutting-edge AI to documentary-style corporate video and aerial footage. Let's create something amazing.
+        BrainMuffin is like having a Hollywood VFX team in your back pocket (minus the crazy budgets). We turbocharge documentary and aerial footage with AI magic that's actually fun to use.
       </p>
       <div class="flex gap-4">
         <a href="/contact" class={buttonVariants({ size: "lg" })}>
@@ -23,9 +39,16 @@ import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import B
         </a>
       </div>
     </div>
-    <!-- Mascot Placeholder -->
-    <div class="bg-muted aspect-square w-full max-w-md mx-auto rounded-lg flex items-center justify-center lg:max-w-none lg:mx-0">
-      <p class="text-muted-foreground text-xl">BrainMuffin Mascot Placeholder</p>
+    <!-- Mascot Image -->
+    <div class="relative w-full max-w-md mx-auto lg:max-w-none lg:mx-0">
+      <Image
+        src={heroCharacter}
+        alt="BrainMuffin mascot character"
+        class="w-full h-auto object-contain"
+        style="max-height: 500px;"
+        format="webp"
+        quality={90}
+      />
     </div>
   </section>
 
@@ -36,22 +59,22 @@ import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import B
       <!-- Service 1 Placeholder -->
       <div class="text-center">
         <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
-        <h3 class="text-xl font-semibold mb-2">AI Video Enhancement</h3>
-        <p class="text-muted-foreground mb-4">Upscaling, noise reduction, stabilization...</p>
+    <h3 class="text-xl font-semibold mb-2">AI Video Wizardry</h3>
+    <p class="text-muted-foreground mb-4">Transform shaky, noisy footage into buttery-smooth 4K with our AI enhancement spells</p>
         <a href="/services#service1" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
       </div>
       <!-- Service 2 Placeholder -->
       <div class="text-center">
         <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
-        <h3 class="text-xl font-semibold mb-2">Intelligent Editing</h3>
-        <p class="text-muted-foreground mb-4">Automated scene detection, smart cuts...</p>
+    <h3 class="text-xl font-semibold mb-2">Editing That Reads Your Mind</h3>
+    <p class="text-muted-foreground mb-4">Our AI doesn't just cut - it understands pacing, emotion, and story flow</p>
         <a href="/services#service2" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
       </div>
       <!-- Service 3 Placeholder -->
       <div class="text-center">
         <div class="bg-muted h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">Icon</div>
-        <h3 class="text-xl font-semibold mb-2">Custom AI Solutions</h3>
-        <p class="text-muted-foreground mb-4">Tailored AI models for unique VFX challenges...</p>
+    <h3 class="text-xl font-semibold mb-2">Custom AI Tailored to You</h3>
+    <p class="text-muted-foreground mb-4">Like a bespoke suit, but for making your videos look ridiculously good</p>
         <a href="/services#service3" class={buttonVariants({ variant: 'link' })}>Learn More &rarr;</a>
       </div>
     </div>
@@ -76,9 +99,9 @@ import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import B
   <!-- About Snippet -->
   <section class="container py-16 md:py-24 bg-secondary/30">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Who is BrainMuffin?</h2>
+      <h2 class="text-3xl font-bold mb-4">Meet Your New Creative Sidekick</h2>
       <p class="text-muted-foreground text-lg mb-6">
-        We're the dedicated AI VFX wing of Coalbanks Creative Inc., based in Lethbridge, Alberta. We blend creative storytelling with powerful AI technology.
+        We're the quirky AI specialists at Coalbanks Creative who geek out over making your videos shine. Based in Lethbridge, fueled by coffee and impossible VFX challenges.
       </p>
       <a href="/about" class={buttonVariants()}>
         Meet the Team
@@ -88,7 +111,7 @@ import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import B
 
   <!-- Blog Teaser -->
   <section class="container py-16 md:py-24">
-    <h2 class="text-3xl font-bold text-center mb-10">From the Blog</h2>
+    <h2 class="text-3xl font-bold text-center mb-10">Brain Food (Our Blog)</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Blog Post 1 Placeholder -->
       <div class="border p-4 rounded-lg">
@@ -121,9 +144,9 @@ import { Button, buttonVariants } from "@/components/ui/button.tsx"; // Import B
 
   <!-- Contact CTA -->
   <section class="container py-16 md:py-24 text-center">
-     <h2 class="text-3xl font-bold mb-4">Ready to Start Your AI VFX Journey?</h2>
+     <h2 class="text-3xl font-bold mb-4">Ready to Make Magic Together?</h2>
       <p class="text-muted-foreground text-lg mb-6 max-w-2xl mx-auto">
-        Let BrainMuffin elevate your next project. Contact us today for a consultation.
+        Whether you're curious or ready to dive in, we'd love to chat about how AI can transform your videos. No salesy stuff - just real talk about what's possible.
       </p>
       <a href="/contact" class={buttonVariants({ size: "lg" })}>
         Get in Touch

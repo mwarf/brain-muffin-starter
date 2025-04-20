@@ -9,6 +9,22 @@ export default {
     "./pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", // Include pages just in case (though src should cover it)
     "./components/**/*.{ts,tsx}", // Specifically for Shadcn UI components
   ],
+  // Add safelist for dynamically applied classes in MobileNav
+  safelist: [
+    'bg-background',
+    'bg-black/30',
+    'backdrop-blur-sm',
+    'transition-opacity',
+    'duration-300',
+    'opacity-100',
+    'opacity-0',
+    'pointer-events-none',
+    'transition-transform',
+    'ease-in-out',
+    'transform', // Keep 'transform' itself if used standalone
+    'translate-x-0',
+    'translate-x-full',
+  ],
   prefix: "", // Matches Shadcn UI setup
   theme: {
     container: {

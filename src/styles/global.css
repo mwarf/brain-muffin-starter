@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.clip-path-organic {
+  clip-path: path('M4.22 14.13C10.39 24.72 28.15 32.2 50 32.2s39.61-7.48 45.78-18.07c5.59-9.54 6.85-24.73-1.57-24.13-49.42 3.52-89.64 3.52-88.42 0C6.8-10.6 8.81 4.59 4.22 14.13Z');
+  transform: scaleX(1.2) scaleY(1.1);
+  transition: all 0.3s ease;
+}
+
 /* Removed @theme block as variables are defined in :root/.dark and tailwind.config.mjs */
 /* @theme {
   --color-border: hsl(var(--border));
@@ -112,7 +118,8 @@
   }
 } */
 
-@utility container {
+/* Removed potentially conflicting custom @utility container rule */
+/* @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
 
@@ -123,7 +130,7 @@
   @media (width >= 1400px) {
     max-width: 1400px;
   }
-}
+} */
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -212,9 +219,16 @@
   }
 
   body {
+    /* Apply bg-background class AND explicit HSL value */
     @apply bg-background text-foreground;
+    background-color: hsl(var(--background)); /* Explicitly set background */
     /* font-feature-settings: "rlig" 1, "calt" 1; */
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Ensure dark mode body also gets explicit background */
+  .dark body {
+    background-color: hsl(var(--background));
   }
 }
