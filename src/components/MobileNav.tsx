@@ -1,9 +1,9 @@
 // Add client directive for Astro islands
 /** @jsxImportSource react */
-import { useState } from 'react'
-import { X, Menu } from 'lucide-react'
-import { buttonVariants } from './ui/button'
-import ThemeToggle from './ThemeToggle.astro'
+import { useState } from "react";
+import { X, Menu } from "lucide-react";
+import { buttonVariants } from "./ui/button";
+import ThemeToggle from "./ThemeToggle.astro";
 
 // Extend HTMLAttributes to include Astro's client directives
 // No longer needed if internal client:load is removed
@@ -14,7 +14,7 @@ import ThemeToggle from './ThemeToggle.astro'
 // }
 
 export default function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="md:hidden">
@@ -28,11 +28,13 @@ export default function MobileNav() {
       </button>
 
       {/* Mobile menu overlay structure - always rendered, visibility controlled by classes */}
-      <div className={`fixed inset-0 z-[60] ${isOpen ? '' : 'pointer-events-none'}`}>
+      <div
+        className={`fixed inset-0 z-[60] ${isOpen ? "" : "pointer-events-none"}`}
+      >
         {/* Overlay */}
         <div
           className={`fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
-            isOpen ? 'opacity-100' : 'opacity-0' // Control opacity via state
+            isOpen ? "opacity-100" : "opacity-0" // Control opacity via state
           }`}
           onClick={() => setIsOpen(false)}
         />
@@ -40,8 +42,9 @@ export default function MobileNav() {
         {/* Menu panel */}
         {/* Use explicit bg-white and dark:bg-zinc-950 instead of bg-background */}
         <div
-          className={`fixed inset-y-0 right-0 flex max-w-full pl-10 bg-white dark:bg-zinc-950 transition-transform duration-300 ease-in-out transform ${ // Changed background class
-            isOpen ? 'translate-x-0' : 'translate-x-full' // Control position via state
+          className={`fixed inset-y-0 right-0 flex max-w-full pl-10 bg-white dark:bg-zinc-950 transition-transform duration-300 ease-in-out transform ${
+            // Changed background class
+            isOpen ? "translate-x-0" : "translate-x-full" // Control position via state
           }`}
         >
           <div className="w-screen max-w-xs">
@@ -58,12 +61,39 @@ export default function MobileNav() {
                 </button>
               </div>
               <div className="mt-6 flex flex-col space-y-4">
-                <a href="/" className={buttonVariants({ variant: 'ghost' })}>Home</a>
-                <a href="/about" className={buttonVariants({ variant: 'ghost' })}>About</a>
-                <a href="/services" className={buttonVariants({ variant: 'ghost' })}>Services</a>
-                <a href="/portfolio" className={buttonVariants({ variant: 'ghost' })}>Portfolio</a>
-                <a href="/blog" className={buttonVariants({ variant: 'ghost' })}>Blog</a>
-                <a href="/contact" className={buttonVariants({ variant: 'ghost' })}>Contact</a>
+                <a href="/" className={buttonVariants({ variant: "ghost" })}>
+                  Home
+                </a>
+                <a
+                  href="/about"
+                  className={buttonVariants({ variant: "ghost" })}
+                >
+                  About
+                </a>
+                <a
+                  href="/services"
+                  className={buttonVariants({ variant: "ghost" })}
+                >
+                  Services
+                </a>
+                <a
+                  href="/portfolio"
+                  className={buttonVariants({ variant: "ghost" })}
+                >
+                  Portfolio
+                </a>
+                <a
+                  href="/blog"
+                  className={buttonVariants({ variant: "ghost" })}
+                >
+                  Blog
+                </a>
+                <a
+                  href="/contact"
+                  className={buttonVariants({ variant: "ghost" })}
+                >
+                  Contact
+                </a>
                 {/* <ThemeToggle client:load="true" /> Temporarily removed */}
               </div>
             </div>
@@ -71,5 +101,5 @@ export default function MobileNav() {
         </div>
       </div>
     </div>
-  )
+  );
 }

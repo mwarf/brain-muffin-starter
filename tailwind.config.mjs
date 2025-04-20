@@ -11,19 +11,19 @@ export default {
   ],
   // Add safelist for dynamically applied classes in MobileNav
   safelist: [
-    'bg-background',
-    'bg-black/30',
-    'backdrop-blur-sm',
-    'transition-opacity',
-    'duration-300',
-    'opacity-100',
-    'opacity-0',
-    'pointer-events-none',
-    'transition-transform',
-    'ease-in-out',
-    'transform', // Keep 'transform' itself if used standalone
-    'translate-x-0',
-    'translate-x-full',
+    "bg-background",
+    "bg-black/30",
+    "backdrop-blur-sm",
+    "transition-opacity",
+    "duration-300",
+    "opacity-100",
+    "opacity-0",
+    "pointer-events-none",
+    "transition-transform",
+    "ease-in-out",
+    "transform", // Keep 'transform' itself if used standalone
+    "translate-x-0",
+    "translate-x-full",
   ],
   prefix: "", // Matches Shadcn UI setup
   theme: {
